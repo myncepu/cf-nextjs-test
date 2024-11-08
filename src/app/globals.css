@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -74,4 +67,38 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .bg-grid {
+    background-size: 80px 80px;
+    background-image: linear-gradient(to right, rgb(0 0 0 / 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(0 0 0 / 0.1) 1px, transparent 1px);
+  }
+  
+  .dark .bg-grid {
+    background-image: linear-gradient(to right, rgb(255 255 255 / 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.1) 1px, transparent 1px);
+  }
+}
+
+/* 添加渐变动画 */
+@keyframes gradient-shift {
+  0% {
+    transform: translate(0%, 0%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-1%, 1%) rotate(-1deg);
+  }
+  100% {
+    transform: translate(0%, 0%) rotate(0deg);
+  }
+}
+
+.animate-gradient {
+  animation: gradient-shift 10s ease-in-out infinite;
 }
